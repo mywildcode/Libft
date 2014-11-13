@@ -6,7 +6,7 @@
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 13:31:43 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/11 17:50:51 by ql-eilde         ###   ########.fr       */
+/*   Updated: 2014/11/12 14:23:08 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static char		*ft_itoa_max(char *str)
 
 char			*ft_itoa(int n)
 {
-	int			i;
-	char		*str;
-	int			temp;
+	int		i;
+	char	*str;
+	int		temp;
 
 	i = (n > 0) ? 0 : 1;
 	str = (char *)malloc(sizeof(char) * i);
