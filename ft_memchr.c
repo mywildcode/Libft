@@ -6,7 +6,7 @@
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 18:26:42 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/10 14:29:37 by ql-eilde         ###   ########.fr       */
+/*   Updated: 2015/01/21 15:21:09 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (*p == (unsigned char)c)
 			return ((void *)p);
-		if (n)
-			p++;
+		p++;
 	}
 	return (NULL);
 }

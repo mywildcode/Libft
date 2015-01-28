@@ -6,7 +6,7 @@
 #    By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/07 10:39:39 by ql-eilde          #+#    #+#              #
-#    Updated: 2014/11/11 18:07:04 by ql-eilde         ###   ########.fr        #
+#    Updated: 2015/01/04 11:37:10 by ql-eilde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,66 +62,20 @@ SRCS = ft_atoi.c \
 	   ft_strsub.c \
 	   ft_strtrim.c \
 	   ft_strsplit.c \
-	   ft_itoa.c
+	   ft_itoa.c \
+	   ft_strnstr.c
 
-OBJS = ft_atoi.o \
-	   ft_isalnum.o \
-	   ft_isalpha.o \
-	   ft_isdigit.o \
-	   ft_isascii.o \
-	   ft_isprint.o \
-	   ft_memcpy.o \
-	   ft_memset.o \
-	   ft_putchar.o \
-	   ft_putchar_fd.o \
-	   ft_putendl.o \
-	   ft_putendl_fd.o \
-	   ft_putnbr.o \
-	   ft_putnbr_fd.o \
-	   ft_putstr.o \
-	   ft_putstr_fd.o \
-	   ft_strcat.o \
-	   ft_strchr.o \
-	   ft_strclr.o \
-	   ft_strcmp.o \
-	   ft_strcpy.o \
-	   ft_strdup.o \
-	   ft_strlen.o \
-	   ft_strncat.o \
-	   ft_strncpy.o \
-	   ft_strrchr.o \
-	   ft_strstr.o \
-	   ft_tolower.o \
-	   ft_toupper.o \
-	   ft_bzero.o \
-	   ft_memalloc.o \
-	   ft_memccpy.o \
-	   ft_memchr.o \
-	   ft_memcmp.o \
-	   ft_memdel.o \
-	   ft_memmove.o \
-	   ft_strdel.o \
-	   ft_strequ.o \
-	   ft_striter.o \
-	   ft_striteri.o \
-	   ft_strjoin.o \
-	   ft_strlcat.o \
-	   ft_strmap.o \
-	   ft_strmapi.o \
-	   ft_strncmp.o \
-	   ft_strnequ.o \
-	   ft_strnew.o \
-	   ft_strsub.o \
-	   ft_strtrim.o \
-	   ft_strsplit.o \
-	   ft_itoa.o
+OBJS = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-all:
+all: $(NAME)
+
+$(NAME):
 	@gcc $(FLAGS) -c $(SRCS)
 	@ar rc $(NAME) $(OBJS)
-	@echo "libft.a has been created"
+	@ranlib $(NAME)
+	@echo "$(NAME) has been created"
 
 clean:
 	@/bin/rm -f $(OBJS)

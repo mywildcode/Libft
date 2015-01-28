@@ -6,22 +6,31 @@
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 18:03:52 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/06 11:02:33 by ql-eilde         ###   ########.fr       */
+/*   Updated: 2015/01/21 16:03:21 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 void	ft_putnbr(int n)
 {
-	if (n < 0)
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	else if (n < 0)
 	{
 		ft_putchar('-');
 		n = n * (-1);
+		ft_putnbr(n);
 	}
-	if (n > 10)
+	else if (n >= 10)
 	{
 		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
-	ft_putchar(n % 10 + 48);
+	else
+		ft_putchar(48 + n);
 }

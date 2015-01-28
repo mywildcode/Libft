@@ -6,16 +6,16 @@
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:27:32 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/12 14:21:51 by ql-eilde         ###   ########.fr       */
+/*   Updated: 2014/11/13 11:31:35 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char				*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	int				i2;
+	int		i2;
 
 	if (!s)
 		return (NULL);

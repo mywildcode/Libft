@@ -5,84 +5,90 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 11:33:33 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/12 11:54:05 by ql-eilde         ###   ########.fr       */
+/*   Created: 2014/11/13 15:27:40 by ql-eilde          #+#    #+#             */
+/*   Updated: 2014/11/13 20:46:57 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include <string.h>
 
-static void set_nb(char const *s, char c, int *nb)
+static size_t	ft_nb_word(char const *s, char c)
 {
-    int     i1;
-    int     i2;
+	size_t		i;
+	size_t		j;
 
-    i1 = 0;
-    i2 = 0;
-    while (s[i1] != '\0')
-    {
-        if (i1 == i2 && s[i1] == c)
-        {
-            i1++;
-            i2++;
-        }
-        else
-        {
-            if (s[i2] == c || s[i2] == '\0')
-            {
-                (*nb)++;
-                i1 = i2;
-            }
-            else
-                i2++;
-        }
-    }
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		while (s[i] != c && s[i] != '\0')
+		{
+			i++;
+			if (s[i] == c || s[i] == '\0')
+				j++;
+		}
+	}
+	return (j);
 }
 
-static void fill_tab(char const *s, char c, char **tab, int index)
+static char		**ft_stralloc(char const *s, char c, int i, int j)
 {
-    int     i1;
-    int     i2;
+	int		k;
+	char	**strv;
 
-    i1 = 0;
-    i2 = 0;
-    while (s[i1] != '\0')
-    {
-        if (i1 == i2 && s[i1] == c)
-        {
-            i1++;
-            i2++;
-        }
-        else
-        {
-            if (s[i2] == c || s[i2] == '\0')
-            {
-                tab[index++] = ft_strsub(s, i1, i2 - i1);
-                i1 = i2;
-            }
-            else
-                i2++;
-        }
-    }
+	k = 0;
+	strv = (char **)malloc(sizeof(char*) * ((ft_nb_word(s, c)) + 1));
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		while (s[i] != c && s[i] != '\0')
+		{
+			i++;
+			j++;
+			if (s[i] == c || s[i] == '\0')
+			{
+				strv[k] = (char *)malloc(sizeof(char) * (j + 1));
+				k++;
+				j = 0;
+			}
+		}
+	}
+	return (strv);
 }
 
-char        **ft_strsplit(char const *s, char c)
+static char		**ft_filler(char **str, char const *s, char c, int i)
 {
-    char    **tab;
-    int     nb;
+	int		j;
+	int		k;
 
-    tab = NULL;
-    if (s)
-    {
-        nb = 0;
-        set_nb(s, c, &nb);
-        tab = (char **) malloc(sizeof(char *) * (nb + 1));
-        if (tab)
-        {
-            tab[nb] = NULL;
-            fill_tab(s, c, tab, 0);
-        }
-    }
-    return (tab);
+	j = 0;
+	k = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		while (s[i] != c && s[i] != '\0')
+		{
+			str[k][j] = (char)s[i];
+			i++;
+			j++;
+			if (s[i] == c || s[i] == '\0')
+			{
+				str[k][j] = '\0';
+				k++;
+				j = 0;
+			}
+		}
+	}
+	str[k] = NULL;
+	return (str);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	return (ft_filler(ft_stralloc(s, c, 0, 0), s, c, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 13:52:21 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/11 18:58:27 by ql-eilde         ###   ########.fr       */
+/*   Updated: 2015/01/21 15:40:07 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (s1[i] == s2[i] && s1[i] != 0 && s2[i] != 0)
+	while (--n)
 	{
-		i++;
-		if (i == n)
-			return (s1[i - 1] - s2[i - 1]);
+		if (str1[i] && str1[i] == str2[i])
+			i++;
 	}
-	return (s1[i] - s2[i]);
+	return (str1[i] - str2[i]);
 }

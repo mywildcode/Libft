@@ -6,32 +6,21 @@
 /*   By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:17:33 by ql-eilde          #+#    #+#             */
-/*   Updated: 2014/11/06 11:50:37 by ql-eilde         ###   ########.fr       */
+/*   Updated: 2015/01/21 15:52:11 by ql-eilde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char		*ft_strstr(const char *str, const char *to_find)
 {
-	int		i;
-	int		l;
-	char	*cp;
+	size_t		len;
 
-	i = 0;
-	l = 0;
-	if (to_find[0] == '\0')
+	len = ft_strlen(to_find);
+	if (!*to_find)
 		return ((char *)str);
-	while (str[i] != '\0')
-	{
-		cp = (char *)&str[i];
-		while (str[i] == to_find[l] && to_find[l] != '\0')
-		{
-			i++;
-			l++;
-			if (to_find[l] == '\0')
-				return ((char *)cp);
-		}
-		l = 0;
-		i++;
-	}
+	while (*str)
+		if (!ft_memcmp(str++, to_find, len))
+			return ((char *)--str);
 	return (0);
 }
