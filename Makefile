@@ -6,7 +6,7 @@
 #    By: ql-eilde <ql-eilde@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/07 10:39:39 by ql-eilde          #+#    #+#              #
-#    Updated: 2015/01/04 11:37:10 by ql-eilde         ###   ########.fr        #
+#    Updated: 2015/01/31 18:40:59 by ql-eilde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,13 @@ SRCS = ft_atoi.c \
 	   ft_strtrim.c \
 	   ft_strsplit.c \
 	   ft_itoa.c \
-	   ft_strnstr.c
+	   ft_strnstr.c \
+	   ft_lstadd.c \
+	   ft_lstdel.c \
+	   ft_lstdelone.c \
+	   ft_lstiter.c \
+	   ft_lstmap.c \
+	   ft_lstnew.c
 
 OBJS = $(SRCS:.c=.o)
 
